@@ -1,0 +1,82 @@
+/* basic reset */
+body,
+h1,
+p,
+a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply a general font and background color */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Center-align the main content and apply padding */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2rem;
+  padding: 10px 0; /* Add padding to ensure the heading is not cut off */
+  width: 100%; /* Ensure heading fits within container */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Style the container */
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Style paragraphs */
+p {
+  margin-bottom: 20px;
+  white-space: pre-wrap; /* Preserve formatting of translated text */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style the clickable link */
+a,
+.download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover .download-btn:hover {
+  background-color: #0056b3;
+}
+
+a:active .download-btn:active {
+  transform: scale(0.98);
+}
+
+.download-btn {
+  cursor: pointer;
+  border: none;
+}

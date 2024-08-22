@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translated Text</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/result_styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="btn-container">
+        <a href="/">Go Back</a>
+        <form action="/download_pdf" method="post">
+          <input
+            type="hidden"
+            name="translated_text"
+            value="{{ translated_text}}"
+          />
+          <input type="hidden" name="filename" value="{{ filename }}" />
+          <button type="submit" class="download-btn">Download as PDF</button>
+        </form>
+      </div>
+      <h1>Translated Text</h1>
+      <p>{{ translated_text }}</p>
+    </div>
+  </body>
+</html>

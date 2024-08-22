@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OCR and Translate PDF</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index_styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Upload PDF for OCR and Translation</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <div class="input-container">
+        <label for="openai_key">Your OpenAI API Key:</label>
+        <input type="password" id="openai_key" name="openai_key" required />
+        <div class="tooltip-icon" id="tooltip-icon-1">?</div>
+        <div class="tooltip-text" id="tooltip-text-1">
+          Get your OpenAI API Key here:
+          <a
+            href="http://platform.openai.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >OpenAI Platform</a
+          >
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="gpt_model">Select GPT Model:</label>
+        <select id="gpt_model" name="gpt_model" required>
+          <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+          <option value="gpt-4">GPT-4</option>
+          <option value="gpt-4-turbo">GPT-4 Turbo</option>
+        </select>
+        <div class="tooltip-icon" id="tooltip-icon-2">?</div>
+        <div class="tooltip-text" id="tooltip-text-2">
+          Select a GPT model, (more advanced models may induce higher costs)
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="source_language">Source Language:</label>
+        <select id="source_language" name="source_language" required>
+          <option value="ara">Arabic</option>
+          <option value="bul">Bulgarian</option>
+          <option value="chs">Chinese (Simplified)</option>
+          <option value="cht">Chinese (Traditional)</option>
+          <option value="hrv">Croatian</option>
+          <option value="cze">Czech</option>
+          <option value="dan">Danish</option>
+          <option value="dut">Dutch</option>
+          <option value="eng">English</option>
+          <option value="fin">Finnish</option>
+          <option value="fre">French</option>
+          <option value="ger">German</option>
+          <option value="gre">Greek</option>
+          <option value="hun">Hungarian</option>
+          <option value="kor">Korean</option>
+          <option value="ita">Italian</option>
+          <option value="jpn">Japanese</option>
+          <option value="pol">Polish</option>
+          <option value="por">Portuguese</option>
+          <option value="rus">Russian</option>
+          <option value="slv">Slovenian</option>
+          <option value="spa">Spanish</option>
+          <option value="swe">Swedish</option>
+          <option value="tur">Turkish</option>
+        </select>
+        <div class="tooltip-icon" id="tooltip-icon-2">?</div>
+        <div class="tooltip-text" id="tooltip-text-2">
+          Select the language of the text in the PDF. Only languages in the
+          drop-down menu are supported for OCR detection.
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="target_language">Target Language:</label>
+        <input
+          type="text"
+          name="target_language"
+          id="target_language"
+          required
+        />
+        <div class="tooltip-icon" id="tooltip-icon-3">?</div>
+        <div class="tooltip-text" id="tooltip-text-3">
+          Specify the language into which the text will be translated. All
+          languages are supported for translation.
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="file">Upload PDF:</label>
+        <input type="file" name="file" accept="application/pdf" required />
+        <div class="tooltip-icon" id="tooltip-icon-4">?</div>
+        <div class="tooltip-text" id="tooltip-text-4">
+          Choose the PDF file you want to process. (Maximum of 30 pages)
+        </div>
+      </div>
+
+      <button type="submit">Upload</button>
+    </form>
+
+    <script>
+      document.querySelectorAll(".tooltip-icon").forEach((icon) => {
+        icon.addEventListener("click", (event) => {
+          event.stopPropagation(); // Prevent the click event from propagating to document
+          const tooltipId = icon.id.replace("tooltip-icon", "tooltip-text");
+          const tooltip = document.getElementById(tooltipId);
+          tooltip.classList.toggle("show");
+        });
+      });
+
+      document.addEventListener("click", () => {
+        document.querySelectorAll(".tooltip-text.show").forEach((tooltip) => {
+          tooltip.classList.remove("show");
+        });
+      });
+
+      document.querySelectorAll(".tooltip-text").forEach((tooltip) => {
+        tooltip.addEventListener("click", (event) => {
+          event.stopPropagation(); // Prevent the click event from closing the tooltip
+        });
+      });
+    </script>
+  </body>
+</html>
